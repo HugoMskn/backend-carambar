@@ -1,0 +1,61 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Blagues Carambar",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/blagues": {
+      "get": {
+        "summary": "Liste toutes les blagues",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "summary": "Ajoute une blague",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Créée" }
+        }
+      }
+    },
+    "/blagues/select/{id}": {
+      "get": {
+        "summary": "Récupère une blague par ID",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "integer" }
+        }],
+        "responses": {
+          "200": { "description": "OK" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/blagues/random": {
+      "get": {
+        "summary": "Renvoie une blague aléatoire",
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    }
+  }
+}
